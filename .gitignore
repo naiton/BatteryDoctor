@@ -1,0 +1,29 @@
+# .NET / IDE
+bin/
+obj/
+.vs/
+.idea/
+*.user
+*.suo
+
+# Build artifacts
+artifacts/
+publish/
+release/
+*.zip
+
+# Portable runtime data
+Data/
+Sessions/
+Reports/
+Logs/
+
+# SQLite/local data
+*.db
+*.db-shm
+*.db-wal
+
+# OS noise
+Thumbs.db
+Desktop.ini
+.DS_Store
