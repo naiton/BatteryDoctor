@@ -1,0 +1,21 @@
+# Battery Doctor public release checklist
+
+- [ ] `dotnet restore` succeeds on a clean Windows machine
+- [ ] `dotnet build -c Release` succeeds with zero errors
+- [ ] Dashboard reads battery data on at least 2-3 laptop brands if available
+- [ ] Minimize-to-tray / restore / real Exit tested
+- [ ] Background monitoring tested for at least 30 minutes
+- [ ] Tray alert tested with a controlled/simulated trigger before relying on it
+- [ ] Start-with-Windows enable/disable tested after installation
+- [ ] Existing Collapse Watch recovery regression still loads
+- [ ] Standard test HTML + JSON export works
+- [ ] Recovered-collapse HTML + JSON export works and reports schemaVersion 2
+- [ ] `Chemistry` shows a readable value or Unknown, never an unexplained large integer
+- [ ] Thai and English UI pass visual review
+- [ ] `AppLinks.json` has the real project/support URLs owned by the maintainer
+- [ ] GPL-3.0 LICENSE included
+- [ ] Privacy statement matches actual behavior
+- [ ] Portable ZIP smoke-tested
+- [ ] Inno Setup installer install/uninstall smoke-tested
+- [ ] VirusTotal / Windows Defender false-positive check performed on the final binaries
+- [ ] Version bumped consistently before publishing

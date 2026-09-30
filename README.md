@@ -1,7 +1,5 @@
 # Battery Doctor
 
-> **Repository bootstrap:** GitHub metadata and portable-release scaffolding are in place. The complete v0.8.0 source tree still needs the prepared source package pushed from a local Git client before this repository is buildable.
-
 Free, offline and privacy-friendly battery diagnostics for Windows laptops.
 
 Battery Doctor goes beyond a single Battery Health percentage. It combines firmware-reported capacity with live discharge behavior, voltage sag, gauge reliability, historical trends and crash-safe recovery after an unexpected battery cutoff.
@@ -12,6 +10,9 @@ Battery Doctor goes beyond a single Battery Health percentage. It combines firmw
 - Live charge/discharge power and runtime estimates
 - Quick / Standard / Deep / Collapse Watch tests
 - Crash-safe session journal for sudden-cutoff investigation
+- Battery temperature when exposed by the battery driver
+- Estimated pack current and dynamic-resistance trend
+- Thermal/load correlation and temperature trend
 - Voltage Sag Severity
 - Gauge Reliability
 - Battery Reliability
@@ -62,13 +63,23 @@ dotnet build
 dotnet run
 ```
 
+## Developer documentation
+
+For contributors, start with:
+
+- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — component responsibilities and end-to-end data flow.
+- [`docs/FUNCTION_REFERENCE.md`](docs/FUNCTION_REFERENCE.md) — function-by-function responsibility reference generated from source XML summaries.
+- [`docs/COMMENTING_GUIDE.md`](docs/COMMENTING_GUIDE.md) — commenting/documentation conventions for future changes.
+
+The maintained C# source also includes `/// <summary>` documentation on methods/constructors and inline comments around non-obvious diagnostic, crash-recovery, privacy, and migration logic.
+
 ## Create a portable release locally
 
 ```powershell
 .\PUBLISH-RELEASE.ps1
 ```
 
-The GitHub workflow also builds a portable ZIP automatically when a tag such as `v0.8.0` is pushed.
+The GitHub workflow also builds a portable ZIP automatically when a tag such as `v0.9.0` is pushed.
 
 ## Support development
 
@@ -83,3 +94,11 @@ GPL-3.0-only. See [LICENSE](LICENSE).
 ## Scope
 
 Battery Doctor observes pack-level information exposed by Windows and firmware. It can flag patterns consistent with severe wear, unreliable gauge behavior, voltage sag or sudden cutoff, but it does not claim to identify an individual failed cell unless the hardware exposes cell-level telemetry.
+
+### Temperature and electrical estimates
+
+Battery Doctor requests battery temperature from the Windows battery-class interface (`BatteryTemperature`) and only falls back to the battery-specific WMI temperature block. It **does not** substitute CPU, GPU, motherboard, or generic ACPI thermal-zone temperatures.
+
+Not every laptop exposes battery temperature. In that case the UI shows that the sensor is unavailable.
+
+Pack current is estimated from `Power / Voltage`, and dynamic resistance is estimated from short load steps using `|ΔV / ΔI|`. These are trend/diagnostic estimates, not laboratory cell-impedance measurements.

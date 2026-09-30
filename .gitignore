@@ -12,13 +12,13 @@ publish/
 release/
 *.zip
 
-# Portable runtime data
+# Portable runtime data (never commit user/device history)
 Data/
 Sessions/
 Reports/
 Logs/
 
-# SQLite/local data
+# SQLite sidecars / local data
 *.db
 *.db-shm
 *.db-wal

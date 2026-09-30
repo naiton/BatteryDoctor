@@ -14,6 +14,9 @@ jobs:
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '10.0.x'
+      - name: Check code documentation
+        shell: pwsh
+        run: ./tools/Check-CodeDocumentation.ps1
       - name: Restore
         run: dotnet restore
       - name: Build

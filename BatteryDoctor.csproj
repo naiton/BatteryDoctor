@@ -9,7 +9,9 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <AssemblyName>BatteryDoctor</AssemblyName>
     <RootNamespace>BatteryDoctor</RootNamespace>
-    <Version>0.8.0</Version>
+    <Version>0.9.0</Version>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
