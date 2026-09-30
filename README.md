@@ -1,5 +1,7 @@
 # Battery Doctor
 
+> **Repository bootstrap:** GitHub metadata and portable-release scaffolding are in place. The complete v0.8.0 source tree still needs the prepared source package pushed from a local Git client before this repository is buildable.
+
 Free, offline and privacy-friendly battery diagnostics for Windows laptops.
 
 Battery Doctor goes beyond a single Battery Health percentage. It combines firmware-reported capacity with live discharge behavior, voltage sag, gauge reliability, historical trends and crash-safe recovery after an unexpected battery cutoff.
